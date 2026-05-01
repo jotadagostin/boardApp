@@ -1,5 +1,6 @@
 import { ArchiveIcon } from "lucide-react";
 import { Section } from "../components/section";
+import { Card } from "../components/card";
 
 export default function Home() {
   return (
@@ -17,10 +18,13 @@ export default function Home() {
 
           {/* Content */}
           <Section.Content>
-            <div>card 1</div>
-            <div>card 1</div>
-            <div>card 1</div>
-            <div>card 1</div>
+            <Card.Root>
+              <Card.Header>
+                <Card.Number>ECO-001</Card.Number>
+                <Card.Title>Implement credit card</Card.Title>
+              </Card.Header>
+              <Card.Footer></Card.Footer>
+            </Card.Root>
           </Section.Content>
         </Section.Root>
       </main>
