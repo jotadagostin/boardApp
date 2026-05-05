@@ -8,7 +8,8 @@ interface BoardProps {
 }
 
 export default async function Home({ searchParams }: BoardProps) {
-  const { q: searchQuery } = await searchParams;
+  const { q } = await searchParams;
+
   return (
     <main className="grid grid-cols-4 gap-5 flex-1 items-stretch">
       <Section.Root>

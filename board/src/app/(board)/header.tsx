@@ -2,7 +2,7 @@
 
 import { Input } from "@/src/components/input";
 import { authClient } from "@/src/lib/auth-client";
-import { LogInIcon, SearchIcon } from "lucide-react";
+import { LoaderIcon, LogInIcon, SearchIcon } from "lucide-react";
 import { useQueryState, parseAsString, debounce } from "nuqs";
 import { ChangeEvent } from "react";
 
@@ -18,6 +18,10 @@ export function Header() {
 
   async function handleSignIn() {
     await authClient.signIn.social({ provider: "github", callbackURL: "/" });
+  }
+
+  async function handleSignOut() {
+    await authClient.signOut();
   }
 
   return (
@@ -41,13 +45,31 @@ export function Header() {
           />
         </div>
 
-        <button
-          type="button"
-          onClick={handleSignIn}
-          className="size-8 rounded-full bg-navy-700 border border-navy-500 flex items-center justify-center hover:bg-navy-600 transition-colors duration-150 cursor-pointer"
-        >
-          <LogInIcon className="size-3.5 text-navy-200" />
-        </button>
+        {isPending ? (
+          <div className="size-8 rounded-full bg-navy-700 border border-navy-500 flex items-center justify-center">
+            <LoaderIcon className="size-3.5 text-navy-200 animate-spin" />
+          </div>
+        ) : session?.user ? (
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="size-8 rounded-full overflow-hidden cursor-pointer border-2 border-transparent hover:border-navy-200 transition-colors duration-150"
+          >
+            <img
+              src={session.user.image ?? ""}
+              alt={session.user.name}
+              className="size-8 rounded-full"
+            />
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleSignIn}
+            className="size-8 rounded-full bg-navy-700 border border-navy-500 flex items-center justify-center hover:bg-navy-600 transition-colors duration-150 cursor-pointer"
+          >
+            <LogInIcon className="size-3.5 text-navy-200" />
+          </button>
+        )}
       </div>
     </div>
   );
