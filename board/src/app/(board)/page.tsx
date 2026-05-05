@@ -2,6 +2,12 @@ import { Button } from "@/src/components/button";
 import { Card } from "@/src/components/card";
 import { Section } from "@/src/components/section";
 import { ArchiveIcon, MessageCircleIcon, ThumbsUpIcon } from "lucide-react";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
+export const metadata: Metadata = {
+  title: "Board",
+  description: "Follow the development progress of our entire platform.",
+};
 
 interface BoardProps {
   searchParams: Promise<{ q?: string }>;
