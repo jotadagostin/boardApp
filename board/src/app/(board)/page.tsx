@@ -14,7 +14,7 @@ interface BoardProps {
   searchParams: Promise<{ q?: string }>;
 }
 
-export default async function Home({ searchParams }: BoardProps) {
+export default async function Board({ searchParams }: BoardProps) {
   const { q } = await searchParams;
 
   const issues = await listIssues({ search: q });
@@ -32,11 +32,17 @@ export default async function Home({ searchParams }: BoardProps) {
 
         {/* Content */}
         <Section.Content>
-          {issues.backlog.map((issue) => {
-            return (
+          {issues.backlog.length === 0 ? (
+            <div className="flex items-center justify-center py-8 text-center">
+              <p className="text-sm text-navy-300">
+                No issues matching your filters
+              </p>
+            </div>
+          ) : (
+            issues.backlog.map((issue) => (
               <Card.Root key={issue.id}>
                 <Card.Header>
-                  <Card.Number>{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -51,8 +57,8 @@ export default async function Home({ searchParams }: BoardProps) {
                   </Button>
                 </Card.Footer>
               </Card.Root>
-            );
-          })}
+            ))
+          )}
         </Section.Content>
       </Section.Root>
 
@@ -67,11 +73,17 @@ export default async function Home({ searchParams }: BoardProps) {
 
         {/* Content */}
         <Section.Content>
-          {issues.todo.map((issue) => {
-            return (
+          {issues.todo.length === 0 ? (
+            <div className="flex items-center justify-center py-8 text-center">
+              <p className="text-sm text-navy-300">
+                No issues matching your filters
+              </p>
+            </div>
+          ) : (
+            issues.todo.map((issue) => (
               <Card.Root key={issue.id}>
                 <Card.Header>
-                  <Card.Number>{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -86,8 +98,8 @@ export default async function Home({ searchParams }: BoardProps) {
                   </Button>
                 </Card.Footer>
               </Card.Root>
-            );
-          })}
+            ))
+          )}
         </Section.Content>
       </Section.Root>
 
@@ -102,11 +114,17 @@ export default async function Home({ searchParams }: BoardProps) {
 
         {/* Content */}
         <Section.Content>
-          {issues.in_progress.map((issue) => {
-            return (
+          {issues.in_progress.length === 0 ? (
+            <div className="flex items-center justify-center py-8 text-center">
+              <p className="text-sm text-navy-300">
+                No issues matching your filters
+              </p>
+            </div>
+          ) : (
+            issues.in_progress.map((issue) => (
               <Card.Root key={issue.id}>
                 <Card.Header>
-                  <Card.Number>{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -121,8 +139,8 @@ export default async function Home({ searchParams }: BoardProps) {
                   </Button>
                 </Card.Footer>
               </Card.Root>
-            );
-          })}
+            ))
+          )}
         </Section.Content>
       </Section.Root>
 
@@ -137,11 +155,17 @@ export default async function Home({ searchParams }: BoardProps) {
 
         {/* Content */}
         <Section.Content>
-          {issues.done.map((issue) => {
-            return (
+          {issues.done.length === 0 ? (
+            <div className="flex items-center justify-center py-8 text-center">
+              <p className="text-sm text-navy-300">
+                No issues matching your filters
+              </p>
+            </div>
+          ) : (
+            issues.done.map((issue) => (
               <Card.Root key={issue.id}>
                 <Card.Header>
-                  <Card.Number>{issue.id}</Card.Number>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
                   <Card.Title>{issue.title}</Card.Title>
                 </Card.Header>
                 <Card.Footer>
@@ -156,8 +180,8 @@ export default async function Home({ searchParams }: BoardProps) {
                   </Button>
                 </Card.Footer>
               </Card.Root>
-            );
-          })}
+            ))
+          )}
         </Section.Content>
       </Section.Root>
     </main>
