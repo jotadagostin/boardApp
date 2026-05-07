@@ -1,13 +1,12 @@
+import Link from "next/dist/client/link";
 import type { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-type CardRootProps = ComponentProps<"a">;
+type CardRootProps = ComponentProps<typeof Link>;
 
 function CardRoot({ className, ...props }: CardRootProps) {
   return (
-    // eslint-disable-next-line @next/next/no-html-link-for-pages
-    <a
-      href="/"
+    <Link
       className={twMerge(
         "bg-navy-700 border-[0.5px] border-navy-600 p-3 space-y-4 rounded-lg block",
         "hover:bg-navy-600/50 hover:border-navy-500 transition-colors duration-150",
