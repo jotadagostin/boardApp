@@ -11,6 +11,8 @@ import Link from "next/link";
 import { IssueComentsList } from "./isssue-coments/issue-comments-list";
 import { Suspense } from "react";
 import { IssueCommentsSkeleton } from "./isssue-coments/issue-comments-skeleton";
+import { IssueLikeButton } from "./issue-like-button";
+import { Skeleton } from "@/src/components/skeleton";
 
 interface IssuePageProps {
   params: Promise<{ id: string }>;
@@ -53,10 +55,7 @@ export default async function IssuePage({ params }: IssuePageProps) {
           {statusLabels[issue.status]}
         </span>
 
-        <Button>
-          <ThumbsUpIcon className="size-3" />
-          <span className="text-sm">12</span>
-        </Button>
+        <IssueLikeButton issueId={issue.id} />
       </div>
 
       <div className="space-y-2">

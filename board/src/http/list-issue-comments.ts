@@ -8,6 +8,7 @@ interface ListIssueCommentsParams {
 
 export async function listIssueComments({ issueId }: ListIssueCommentsParams) {
   await setTimeout(2000);
+
   const url = new URL(
     `/api/issues/${issueId}/comments`,
     clientEnv.NEXT_PUBLIC_API_URL,
