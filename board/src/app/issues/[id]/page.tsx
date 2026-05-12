@@ -1,18 +1,11 @@
-import { Button } from "@/src/components/button";
 import { getIssue } from "@/src/http/get-issue";
-import {
-  ArchiveIcon,
-  MessageCirclePlusIcon,
-  MoveLeftIcon,
-  ThumbsUpIcon,
-} from "lucide-react";
+import { ArchiveIcon, MessageCirclePlusIcon, MoveLeftIcon } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { IssueComentsList } from "./isssue-coments/issue-comments-list";
 import { Suspense } from "react";
 import { IssueCommentsSkeleton } from "./isssue-coments/issue-comments-skeleton";
 import { IssueLikeButton } from "./issue-like-button";
-import { Skeleton } from "@/src/components/skeleton";
 
 interface IssuePageProps {
   params: Promise<{ id: string }>;
