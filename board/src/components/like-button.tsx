@@ -73,8 +73,8 @@ export function LikeButton({
   const liked = initialLiked;
 
   function handleToggleLike(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
+    event.preventDefault(); // Prevent the default button behavior (e.g., form submission)
+    event.stopPropagation(); // Prevent the click event from bubbling up to parent elements
     onToggleLike();
   }
 
