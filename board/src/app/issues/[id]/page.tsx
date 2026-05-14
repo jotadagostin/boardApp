@@ -1,5 +1,5 @@
 import { getIssue } from "@/src/http/get-issue";
-import { ArchiveIcon, MessageCirclePlusIcon, MoveLeftIcon } from "lucide-react";
+import { ArchiveIcon, MoveLeftIcon } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { IssueComentsList } from "./isssue-coments/issue-comments-list";

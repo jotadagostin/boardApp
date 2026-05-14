@@ -5,7 +5,6 @@ import { Loader2Icon, MessageCirclePlusIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-import { authClient } from "@/src/lib/auth-client";
 
 const createCommentSchema = z.object({
   text: z
