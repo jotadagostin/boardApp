@@ -1,15 +1,23 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
+import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
-type ModalProps = Dialog.DialogContentProps;
+// type ModalProps = Dialog.DialogContentProps;
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-// interface ModalProps extends Dialog.DialogContentProps {}
+interface ModalProps extends Dialog.DialogContentProps {}
 
 export function Modal({ className, ...props }: ModalProps) {
+  const router = useRouter();
+
+  function handleOpenChange(open: boolean) {
+    if (!open) {
+      router.back();
+    }
+  }
   return (
-    <Dialog.Root defaultOpen>
+    <Dialog.Root defaultOpen onOpenChange={handleOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60" />
         <Dialog.Content

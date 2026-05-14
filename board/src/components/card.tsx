@@ -1,4 +1,4 @@
-import Link from "next/dist/client/link";
+import Link from "next/link";
 import type { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
