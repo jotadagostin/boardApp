@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { IssuesListResponseSchema } from "../api/routes/list-issues";
 // import { clientEnv } from "../env";
 
@@ -6,7 +7,12 @@ interface ListIssuesParams {
 }
 
 export async function listIssues({ search }: ListIssuesParams = {}) {
+  "use cache"; //15 minutes
+
+  cacheLife("minutes");
+
   const baseURL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
+
   const url = new URL("/api/issues", baseURL);
 
   if (search) {
