@@ -7,8 +7,10 @@ export async function deleteComment({
   issueId,
   commentId,
 }: DeleteCommentParams) {
-  const baseURL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
-  const url = new URL(`/api/issues/${issueId}/comments/${commentId}`, baseURL);
+  const baseURL = process.env.NEXT_PUBLIC_API_URL;
+  const url = baseURL
+    ? new URL(`/api/issues/${issueId}/comments/${commentId}`, baseURL)
+    : `/api/issues/${issueId}/comments/${commentId}`;
 
   console.log("Deleting comment:", { issueId, commentId, url: url.toString() });
 

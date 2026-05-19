@@ -10,12 +10,18 @@ export async function getIssueInteractions({
 }: GetIssueInteractionsParams) {
   await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate delay
 
-  const url = new URL(
-    `/api/issues/interactions`,
-    clientEnv.NEXT_PUBLIC_API_URL,
-  );
+  const baseURL = clientEnv.NEXT_PUBLIC_API_URL;
+  let url: URL | string;
 
-  url.searchParams.set("issueIds", issueIds.join(","));
+  if (baseURL) {
+    url = new URL(`/api/issues/interactions`, baseURL);
+    url.searchParams.set("issueIds", issueIds.join(","));
+  } else {
+    const params = new URLSearchParams({
+      issueIds: issueIds.join(","),
+    });
+    url = `/api/issues/interactions?${params.toString()}`;
+  }
 
   const response = await fetch(url, {
     credentials: "include", // Include cookies for authentication

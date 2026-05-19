@@ -12,10 +12,10 @@ interface CreateCommentParams {
 }
 
 export async function createComment({ issueId, text }: CreateCommentParams) {
-  const url = new URL(
-    `/api/issues/${issueId}/comments`,
-    clientEnv.NEXT_PUBLIC_API_URL,
-  );
+  const baseURL = clientEnv.NEXT_PUBLIC_API_URL;
+  const url = baseURL
+    ? new URL(`/api/issues/${issueId}/comments`, baseURL)
+    : `/api/issues/${issueId}/comments`;
 
   const incomingHeaders = await headers();
 
