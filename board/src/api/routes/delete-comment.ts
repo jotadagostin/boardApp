@@ -68,7 +68,7 @@ const app = new OpenAPIHono<{
 app.use(requireAuth);
 
 export const deleteComment = app.openapi(route, async (c) => {
-  const { commentId } = c.req.valid("param");
+  const { commentId, issueId } = c.req.valid("param");
   const user = c.get("user");
 
   // Check if comment exists
