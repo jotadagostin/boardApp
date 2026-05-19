@@ -3,6 +3,8 @@ import { BackButton } from "./back-button";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { IssueDetails } from "@/src/app/issues/[id]/issue-details";
 
+export const dynamic = "force-dynamic";
+
 interface IssuePageProps {
   params: Promise<{ id: string }>;
 }
