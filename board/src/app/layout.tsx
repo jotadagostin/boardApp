@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -28,8 +29,8 @@ export default function RootLayout({
       <body className="bg-navy-950 text-navy-50 antialiased">
         <ReactQueryProvider>
           <NuqsAdapter>
-            {modal}
-            {children}
+            <Suspense fallback={null}>{modal}</Suspense>
+            <Suspense fallback={null}>{children}</Suspense>
           </NuqsAdapter>
         </ReactQueryProvider>
       </body>

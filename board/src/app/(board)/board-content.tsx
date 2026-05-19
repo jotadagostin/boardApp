@@ -27,7 +27,6 @@ export function BoardContent({ issues }: BoardContentProps) {
     {
       queryKey: ["issues-likes", allIssuesIds.sort().join(",")],
       queryFn: () => getIssueInteractions({ issueIds: allIssuesIds }),
-      suspense: false,
     },
   );
 
