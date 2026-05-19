@@ -13,6 +13,7 @@ export function IssueLikeButton({ issueId }: IssueLikeButtonProps) {
   const { data, isLoading } = useQuery({
     queryKey: ["issue-likes", issueId],
     queryFn: () => getIssueInteractions({ issueIds: [issueId] }),
+    suspense: false,
   });
 
   if (isLoading) {

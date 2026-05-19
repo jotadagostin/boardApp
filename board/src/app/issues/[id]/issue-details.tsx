@@ -8,6 +8,7 @@ import { getIssue } from "@/src/http/get-issue";
 import { authClient } from "@/src/lib/auth-client";
 import { headers } from "next/headers";
 import { createComment } from "@/src/http/create-comment";
+import { Skeleton } from "@/src/components/skeleton";
 
 interface IssueDetailsProps {
   issueId: string;
@@ -44,7 +45,9 @@ export async function IssueDetails({ issueId }: IssueDetailsProps) {
           {statusLabels[issue.status]}
         </span>
 
-        <IssueLikeButton issueId={issue.id} />
+        <Suspense fallback={<Skeleton className="h-7 w-16" />}>
+          <IssueLikeButton issueId={issue.id} />
+        </Suspense>
       </div>
 
       <div className="space-y-2">
