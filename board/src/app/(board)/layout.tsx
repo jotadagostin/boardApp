@@ -6,7 +6,7 @@ export default function BoardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="max-w-405 w-full mx-auto p-10 flex flex-col gap-8 h-dvh">
+    <div className="w-full max-w-[1600px] mx-auto px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 flex flex-col gap-8 h-dvh">
       <Header />
 
       {children}

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export function Header() {
   return (
-    <div className="max-w-225 mx-auto w-full flex items-center justify-between">
+    <div className="w-full mx-auto flex flex-col gap-4 items-start justify-between md:flex-row md:items-center">
       <div className="space-y-1">
         <h1 className="font-semibold text-xl">Product Roadmap</h1>
         <p className="text-sm text-navy-100">
@@ -12,7 +12,7 @@ export function Header() {
         </p>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="w-full flex flex-col gap-4 items-stretch sm:flex-row sm:items-center sm:justify-end">
         <Suspense>
           <SearchInput />
         </Suspense>

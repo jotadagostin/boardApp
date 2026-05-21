@@ -17,12 +17,12 @@ export function SearchInput() {
     });
   }
   return (
-    <div className="relative">
+    <div className="relative w-full max-w-[18rem] sm:max-w-[22rem]">
       <SearchIcon className="absolute size-4 text-navy-200 left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
       <Input
         type="text"
         placeholder="search for features..."
-        className="w-65.7 pl-8"
+        className="w-full pl-8"
         value={search}
         onChange={handleSearchUpdate}
       />
