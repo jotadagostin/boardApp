@@ -46,7 +46,13 @@ type CardFooterProps = ComponentProps<"div">;
 
 function CardFooter({ className, ...props }: CardFooterProps) {
   return (
-    <div className={twMerge("flex items-center gap-2", className)} {...props} />
+    <div
+      className={twMerge(
+        "flex flex-wrap items-center justify-between gap-2",
+        className,
+      )}
+      {...props}
+    />
   );
 }
 
